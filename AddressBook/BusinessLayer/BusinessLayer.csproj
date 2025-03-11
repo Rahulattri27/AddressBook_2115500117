@@ -10,4 +10,12 @@
     <ProjectReference Include="..\ModelLayer\ModelLayer.csproj" />
     <ProjectReference Include="..\RepositoryLayer\RepositoryLayer.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="Interface\" />
+    <None Remove="Service\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interface\" />
+    <Folder Include="Service\" />
+  </ItemGroup>
 </Project>
