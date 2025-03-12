@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj",
+      "projectUniqueName": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj",
       "projectName": "ModelLayer",
-      "projectPath": "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj",
+      "projectPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj",
       "packagesPath": "/Users/rahulkumarair/.nuget/packages/",
-      "outputPath": "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/obj/",
+      "outputPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/rahulkumarair/.nuget/NuGet/NuGet.Config"

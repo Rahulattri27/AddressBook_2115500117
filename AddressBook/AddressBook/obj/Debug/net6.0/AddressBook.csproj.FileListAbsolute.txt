@@ -172,3 +172,9 @@
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/obj/Debug/net6.0/AddressBook.pdb
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/obj/Debug/net6.0/AddressBook.genruntimeconfig.cache
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/obj/Debug/net6.0/ref/AddressBook.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/AutoMapper.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/FluentValidation.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/FluentValidation.AspNetCore.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/FluentValidation.DependencyInjectionExtensions.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/obj/Debug/net6.0/AddressBook.MvcApplicationPartsAssemblyInfo.cs

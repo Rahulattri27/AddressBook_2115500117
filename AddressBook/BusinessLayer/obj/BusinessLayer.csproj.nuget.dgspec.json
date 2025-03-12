@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/rahulkumarair/Desktop/AddressBook/BusinessLayer/BusinessLayer.csproj": {}
+    "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/BusinessLayer/BusinessLayer.csproj": {}
   },
   "projects": {
-    "/Users/rahulkumarair/Desktop/AddressBook/BusinessLayer/BusinessLayer.csproj": {
+    "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/BusinessLayer/BusinessLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rahulkumarair/Desktop/AddressBook/BusinessLayer/BusinessLayer.csproj",
+        "projectUniqueName": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/BusinessLayer/BusinessLayer.csproj",
         "projectName": "BusinessLayer",
-        "projectPath": "/Users/rahulkumarair/Desktop/AddressBook/BusinessLayer/BusinessLayer.csproj",
+        "projectPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/BusinessLayer/BusinessLayer.csproj",
         "packagesPath": "/Users/rahulkumarair/.nuget/packages/",
-        "outputPath": "/Users/rahulkumarair/Desktop/AddressBook/BusinessLayer/obj/",
+        "outputPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/BusinessLayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rahulkumarair/.nuget/NuGet/NuGet.Config"
@@ -26,11 +26,11 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj": {
-                "projectPath": "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj"
+              "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj": {
+                "projectPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj"
               },
-              "/Users/rahulkumarair/Desktop/AddressBook/RepositoryLayer/RepositoryLayer.csproj": {
-                "projectPath": "/Users/rahulkumarair/Desktop/AddressBook/RepositoryLayer/RepositoryLayer.csproj"
+              "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/RepositoryLayer/RepositoryLayer.csproj": {
+                "projectPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/RepositoryLayer/RepositoryLayer.csproj"
               }
             }
           }
@@ -44,6 +44,16 @@
       "frameworks": {
         "net6.0": {
           "targetAlias": "net6.0",
+          "dependencies": {
+            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
+              "target": "Package",
+              "version": "[6.1.1, )"
+            },
+            "FluentValidation.AspNetCore": {
+              "target": "Package",
+              "version": "[11.3.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -74,14 +84,14 @@
         }
       }
     },
-    "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj": {
+    "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj",
+        "projectUniqueName": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj",
         "projectName": "ModelLayer",
-        "projectPath": "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj",
+        "projectPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj",
         "packagesPath": "/Users/rahulkumarair/.nuget/packages/",
-        "outputPath": "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/obj/",
+        "outputPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rahulkumarair/.nuget/NuGet/NuGet.Config"
@@ -137,14 +147,14 @@
         }
       }
     },
-    "/Users/rahulkumarair/Desktop/AddressBook/RepositoryLayer/RepositoryLayer.csproj": {
+    "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/RepositoryLayer/RepositoryLayer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/rahulkumarair/Desktop/AddressBook/RepositoryLayer/RepositoryLayer.csproj",
+        "projectUniqueName": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/RepositoryLayer/RepositoryLayer.csproj",
         "projectName": "RepositoryLayer",
-        "projectPath": "/Users/rahulkumarair/Desktop/AddressBook/RepositoryLayer/RepositoryLayer.csproj",
+        "projectPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/RepositoryLayer/RepositoryLayer.csproj",
         "packagesPath": "/Users/rahulkumarair/.nuget/packages/",
-        "outputPath": "/Users/rahulkumarair/Desktop/AddressBook/RepositoryLayer/obj/",
+        "outputPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/RepositoryLayer/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/rahulkumarair/.nuget/NuGet/NuGet.Config"
@@ -159,8 +169,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj": {
-                "projectPath": "/Users/rahulkumarair/Desktop/AddressBook/ModelLayer/ModelLayer.csproj"
+              "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj": {
+                "projectPath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/ModelLayer/ModelLayer.csproj"
               }
             }
           }

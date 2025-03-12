@@ -14,6 +14,7 @@ namespace ModelLayer.Model
 		[Phone]
 		[Required]
 		public string Phone_No { get; set; }
+		public int UserId { get; set; }
 	}
 }
 
