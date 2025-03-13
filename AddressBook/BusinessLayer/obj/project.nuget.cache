@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "O6YuZAevJjEPNp2K4iajy9JSPVLdUVOcf9fYvkn0wIvEOFA9akNsGle31KH7aX/NAOBR3/jZMqetga07uScfJA==",
+  "dgSpecHash": "YyjglLHlX8IgAcwBXajKvOebMsVNeQ7CrJCOisZ4+CIgBM2jy35BM2YH8RKekyKSmeg6V7U9lyl8Ka1LOjOGLg==",
   "success": true,
   "projectFilePath": "/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/BusinessLayer/BusinessLayer.csproj",
   "expectedPackageFiles": [
@@ -11,6 +11,7 @@
     "/Users/rahulkumarair/.nuget/packages/fluentvalidation/11.5.1/fluentvalidation.11.5.1.nupkg.sha512",
     "/Users/rahulkumarair/.nuget/packages/fluentvalidation.aspnetcore/11.3.0/fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
     "/Users/rahulkumarair/.nuget/packages/fluentvalidation.dependencyinjectionextensions/11.5.1/fluentvalidation.dependencyinjectionextensions.11.5.1.nupkg.sha512",
+    "/Users/rahulkumarair/.nuget/packages/microsoft.aspnetcore.authentication.jwtbearer/6.0.36/microsoft.aspnetcore.authentication.jwtbearer.6.0.36.nupkg.sha512",
     "/Users/rahulkumarair/.nuget/packages/microsoft.bcl.asyncinterfaces/1.1.1/microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "/Users/rahulkumarair/.nuget/packages/microsoft.csharp/4.5.0/microsoft.csharp.4.5.0.nupkg.sha512",
     "/Users/rahulkumarair/.nuget/packages/microsoft.data.sqlclient/5.1.3/microsoft.data.sqlclient.5.1.3.nupkg.sha512",

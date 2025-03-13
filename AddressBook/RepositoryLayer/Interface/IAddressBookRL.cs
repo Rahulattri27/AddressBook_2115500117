@@ -4,7 +4,7 @@ namespace RepositoryLayer.Interface
 {
 	public interface IAddressBookRL
 	{
-		AddressBookEntry GetById(int id);
+		AddressBookEntry? GetById(int id);
         public List<AddressBookEntry> GetAll();
         bool AddEntry(AddressBookEntry entry);
         bool UpdateEntry(int id, AddressBookEntry updatedentry);

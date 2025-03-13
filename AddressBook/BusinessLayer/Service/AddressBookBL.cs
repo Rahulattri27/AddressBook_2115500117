@@ -23,7 +23,7 @@ namespace BusinessLayer.Service
 			return _mapper.Map<List<AddressBookDTO>>(contacts);
 		}
         //method to get the particular contact from Respository layer
-        public AddressBookDTO GetContactById(int id)
+        public AddressBookDTO? GetContactById(int id)
 		{
 			var contact = _addressBookRL.GetById(id);
 			if (contact == null)

@@ -178,3 +178,4 @@
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/FluentValidation.AspNetCore.dll
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/obj/Debug/net6.0/AddressBook.MvcApplicationPartsAssemblyInfo.cs
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll

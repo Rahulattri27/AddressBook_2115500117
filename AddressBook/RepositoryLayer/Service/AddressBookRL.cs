@@ -27,8 +27,9 @@ namespace RepositoryLayer.Service
 		/// </summary>
 		/// <param name="id">input id from user</param>
 		/// <returns>Contact on Particular id</returns>
-		public AddressBookEntry GetById(int id)
+		public AddressBookEntry? GetById(int id)
 		{
+
 			return _context.AddressBook.Find(id);
 		}
 		/// <summary>
