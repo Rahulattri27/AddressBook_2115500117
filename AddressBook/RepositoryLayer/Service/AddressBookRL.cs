@@ -9,11 +9,14 @@ namespace RepositoryLayer.Service
 	public class AddressBookRL : IAddressBookRL
 	{
 		private readonly AddressBookContext _context;
+
 		//Constructor of class
 		public AddressBookRL(AddressBookContext context)
 		{
 			_context = context;
 		}
+
+
 		/// <summary>
 		/// method to get all the contacts from database
 		/// </summary>
@@ -22,6 +25,8 @@ namespace RepositoryLayer.Service
 		{
 			return _context.AddressBook.ToList<AddressBookEntry>();
 		}
+
+
 		/// <summary>
 		/// method to get the particular contact
 		/// </summary>
@@ -32,6 +37,8 @@ namespace RepositoryLayer.Service
 
 			return _context.AddressBook.Find(id);
 		}
+
+
 		/// <summary>
 		/// method to add the contact in addressbook
 		/// </summary>
@@ -50,6 +57,8 @@ namespace RepositoryLayer.Service
 				return false;
 			}
 		}
+
+
 		/// <summary>
 		/// method to update the contact info on id
 		/// </summary>
@@ -70,6 +79,8 @@ namespace RepositoryLayer.Service
            
             return false;
         }
+
+
 		/// <summary>
 		/// delete the contact on particular id
 		/// </summary>

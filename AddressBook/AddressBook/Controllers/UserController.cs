@@ -14,57 +14,115 @@ namespace AddressBook.Controllers
 	public class UserController:ControllerBase
 	{
 		private readonly IUserBL _userBL;
-		public UserController(IUserBL userRL)
+		/// <summary>
+		/// Constructor to Initialize the instance
+		/// </summary>
+		/// <param name="userBL">The Business layer service for user</param>
+		public UserController(IUserBL userBL)
 		{
-			_userBL = userRL;
+			_userBL = userBL;
 		}
 
-
+		/// <summary>
+		/// Registers a new user
+		/// </summary>
+		/// <param name="registerDTO">User Details</param>
+		/// <returns> Success or Failure Response</returns>
 		[HttpPost("register")]
 		public IActionResult Register(RegisterDTO registerDTO)
 		{
+			var response = new ResponseBody<User>();
 			var user = _userBL.RegisterUser(registerDTO);
 			if (user == null)
 			{
-				return BadRequest("User Already Exist");
+				response.Message = "User Already Exist";
+				response.Data = user;
+
+                return BadRequest(response);
 			}
-			return Ok("User Registered Successfully");
+			response.Success = true;
+			response.Message = "User Registered Successfully";
+			response.Data = user;
+            return Ok(response);
 		}
+
+		/// <summary>
+		/// Logs in an existing user
+		/// </summary>
+		/// <param name="login">User credentials for login</param>
+		/// <returns>Success or Failure Message</returns>
 		[HttpPost("login")]
 		public IActionResult Login(LoginDTO login)
 		{
-			var user = _userBL.LoginUser(login);
+            
+            var user = _userBL.LoginUser(login);
 			if (user == null)
 			{
-				return Unauthorized("Invalid credentials");
+                var response = new ResponseBody<LoginDTO>();
+				response.Message = "Invalid Credentials";
+				response.Data = login;
+                return Unauthorized(response);
 			}
-			return Ok(user);
+			var response2 = new ResponseBody<UserResponseDTO>();
+			response2.Success = true;
+			response2.Message = "User Login Successfully";
+			response2.Data = user;
+			return Ok(response2);
 		}
+
+		/// <summary>
+		/// Method to check the Admin Role
+		/// </summary>
+		/// <returns>Returns message(only for admin)</returns>
 		[Authorize(Roles="Admin")]
 		[HttpGet("all-user")]
 		public IActionResult GetAllUSer()
 		{
 			return Ok("Only admin can access this.");
 		}
+
+		/// <summary>
+		/// Sends a password reset token to users email
+		/// </summary>
+		/// <param name="email">the email address of the user</param>
+		/// <returns>Returns success message if email exists</returns>
 		[HttpPost("forget-password")]
 		public IActionResult ForgetPassword([FromBody] string email)
 		{
+			var response = new ResponseBody<string>();
 			bool success = _userBL.ForgetPassword(email);
 			if (success)
 			{
-				return Ok("Reset Link Sent to your Email");
+				response.Success = true;
+				response.Message = "Reset Link Sent to your Email";
+				
+
+				return Ok(response);
 			}
-			return NotFound("Email Not Found");
+			response.Message = "Email not found.";
+			return NotFound(response);
 		}
+
+		/// <summary>
+		/// Resets the password for user
+		/// </summary>
+		/// <param name="resetPassword">the reset token and new password</param>
+		/// <returns>success message if password reset successfully</returns>
 		[HttpPost("reset-password")]
 		public IActionResult ResetPassword([FromBody] ResetPasswordDTO resetPassword)
 		{
+			var response = new ResponseBody<string>();
 			bool success = _userBL.ResetPassword(resetPassword.ResetToken, resetPassword.NewPassword);
 			if (success)
 			{
-				return Ok("Password reset Successfully");
+				response.Success = true;
+				response.Message = "Password reset Successfully";
+
+                return Ok(response);
 			}
-			return NotFound("Invalid or Expired token");
+			response.Message = "Invalid or Expired token";
+
+            return NotFound(response);
 		}
 
         

@@ -17,7 +17,13 @@ namespace BusinessLayer.Service
             _userRL = userRL;
             _rabbitMqProducer = rabbitMqProducer;
         }
-        //method to register the user
+
+        /// <summary>
+        /// method to register the user
+        /// </summary>
+        /// <param name="userRegisterDTO">User Details to register</param>
+        /// <returns>Returns user details if save else null</returns>
+       
         public User RegisterUser(RegisterDTO userRegisterDTO)
         {
             var user= _userRL.RegisterUser(userRegisterDTO);
@@ -34,17 +40,30 @@ namespace BusinessLayer.Service
             }
             return user;
         }
-        //method to login the user
+        /// <summary>
+        /// method to login the user
+        /// </summary>
+        /// <param name="loginDTO">login credentials</param>
+        /// <returns>Success or failure response</returns>
         public UserResponseDTO LoginUser(LoginDTO loginDTO)
         {
             return _userRL.LoginUser(loginDTO);
         }
-        //method to get the token on mail for forget password
+        /// <summary>
+        /// method to get the token on mail for forget password
+        /// </summary>
+        /// <param name="email">email of user </param>
+        /// <returns>true or false id email exist or not</returns>
         public bool ForgetPassword(string email)
         {
             return _userRL.ForgetPassword(email);
         }
-        //method to reset the password 
+        /// <summary>
+        /// method to reset the password 
+        /// </summary>
+        /// <param name="token">reset token from mail</param>
+        /// <param name="newPassword">new password from user</param>
+        /// <returns>true or false</returns>
         public bool ResetPassword(string token, string newPassword)
         {
             return _userRL.ResetPassword(token, newPassword);

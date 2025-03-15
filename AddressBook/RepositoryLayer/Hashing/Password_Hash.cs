@@ -9,6 +9,11 @@ namespace RepositoryLayer.Hashing
 		private const int SaltSize = 16;
 		private const int HashSize = 20;
 		private const int Iterations = 10000;
+		/// <summary>
+		/// method to hash the password
+		/// </summary>
+		/// <param name="userPass">password from user</param>
+		/// <returns>hashed version of version</returns>
 		public string PasswordHashing(string userPass)
 		{
 			byte[] salt = new byte[SaltSize];
@@ -21,6 +26,12 @@ namespace RepositoryLayer.Hashing
 			Array.Copy(hash, 0, hashByte, SaltSize, HashSize);
 			return Convert.ToBase64String(hashByte);
 		}
+		/// <summary>
+		/// method to verify hashpassword and normal password
+		/// </summary>
+		/// <param name="userPass">password from user</param>
+		/// <param name="storedHashPass">password from database</param>
+		/// <returns>true or false if matches or not</returns>
 		public bool VerifyPassword(String userPass,string storedHashPass)
 		{
 			byte[] hashByte = Convert.FromBase64String(storedHashPass);

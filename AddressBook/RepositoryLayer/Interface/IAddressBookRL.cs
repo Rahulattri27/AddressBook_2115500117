@@ -2,6 +2,7 @@
 using ModelLayer.Model;
 namespace RepositoryLayer.Interface
 {
+    //Interface of AddressBookRL
 	public interface IAddressBookRL
 	{
 		AddressBookEntry? GetById(int id);

@@ -8,15 +8,22 @@ using ModelLayer.DTO;
 
 namespace RabbitMQ.Consumer
 {
+    /// <summary>
+    /// class to consume the RabbitMq publish on channels
+    /// </summary>
     public class UserConsumer
     {
         private readonly IConfiguration _configuration;
 
+        //constructor
         public UserConsumer(IConfiguration configuration)
         {
             _configuration = configuration;
         }
 
+        /// <summary>
+        /// method to consume the Message from RabbitMQ
+        /// </summary>
         public void ConsumeMessage()
         {
             var factory = new ConnectionFactory

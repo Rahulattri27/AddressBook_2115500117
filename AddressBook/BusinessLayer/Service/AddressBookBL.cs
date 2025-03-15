@@ -16,7 +16,13 @@ namespace BusinessLayer.Service
 		private readonly IMapper _mapper;
 		private readonly IDatabase _cache;
 		private readonly TimeSpan _cacheDuration;
-		//Constructor of class 
+		/// <summary>
+		/// create the instance of objects
+		/// </summary>
+		/// <param name="addressBookRL">Respository layer AddressBook</param>
+		/// <param name="mapper">AutoMapper to convert AddressBookDTO to AddressBookEntry or viceversa</param>
+		/// <param name="redis">Redis for caching</param>
+		/// <param name="configuration">load the configuration from settings.json</param>
 		public AddressBookBL(IAddressBookRL addressBookRL,IMapper mapper, IConnectionMultiplexer redis,IConfiguration configuration)
 		{
 			_mapper = mapper;
@@ -24,9 +30,12 @@ namespace BusinessLayer.Service
 			_cache = redis.GetDatabase();
 			_cacheDuration = TimeSpan.FromSeconds(int.Parse(configuration["Redis:CacheDuration"] ?? "300"));
 		}
-		
-		//method to get the  contacts from Respository layer if not available in cache
-		public async Task<List<AddressBookDTO>> GetAllContacts()
+
+        /// <summary>
+        /// Get the  contacts from Respository layer if not available in cache
+        /// </summary>
+        /// <returns>List of all Contacts</returns>
+        public async Task<List<AddressBookDTO>> GetAllContacts()
 		{
 			//check the cache if its not null
 			const string cacheKey = "contact_list";
@@ -41,7 +50,12 @@ namespace BusinessLayer.Service
 			await _cache.StringSetAsync(cacheKey, JsonSerializer.Serialize(_mapper.Map<List<AddressBookDTO>>(contacts)), _cacheDuration);
 			return _mapper.Map<List<AddressBookDTO>>(contacts);
 		}
-        //method to get the particular contact from Respository layer if not available in cache
+
+        /// <summary>
+        /// Get the particular contact from Respository layer if not available in cache
+        /// </summary>
+        /// <param name="id">id of contact</param>
+        /// <returns>Contact details if found else null</returns>
         public async Task<AddressBookDTO?> GetContactById(int id)
 		{
 			//check the contact in cache
@@ -61,8 +75,11 @@ namespace BusinessLayer.Service
             return _mapper.Map<AddressBookDTO>(contact);
         }
 
-
-        //method to add the contact in Respository layer
+        /// <summary>
+        /// Add the contact in Respository layer
+        /// </summary>
+        /// <param name="contact">Contact details </param>
+        /// <returns>Success or Failure Response</returns>
         public async Task<bool> AddContact(AddressBookDTO contact)
 		{
 			var entry = _mapper.Map<AddressBookEntry>(contact);
@@ -79,8 +96,12 @@ namespace BusinessLayer.Service
 			
 		}
 
-
-        //method to update  the contacts in Respository layer
+        /// <summary>
+        /// update  the contacts in Respository layer
+        /// </summary>
+        /// <param name="id">id of contact</param>
+        /// <param name="contact">updated details</param>
+        /// <returns>Success or Failure Response</returns>
         public async Task<bool> Update(int id,AddressBookDTO contact)
 		{
 			string cacheKey = $"contact_{id}";
@@ -109,8 +130,11 @@ namespace BusinessLayer.Service
 			
 		}
 
-
-        //method to delete the contacts from Respository layer
+        /// <summary>
+        /// delete the contacts from Respository layer
+        /// </summary>
+        /// <param name="id">id of contact</param>
+        /// <returns>Success or Failure Response</returns>
         public async Task<bool> DeleteContact(int id)
 		{
 			bool result = _addressBookRL.DeleteEntry(id);

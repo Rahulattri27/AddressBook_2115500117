@@ -20,6 +20,7 @@ namespace RepositoryLayer.Service
 		private readonly Password_Hash _passwordHash;
 		private readonly IEmailService _emailService;
 		private readonly IConfiguration _configuration;
+		//Constructor to Initialize the objects
 		public UserRL(AddressBookContext context,Password_Hash hash,IEmailService emailService,IConfiguration configuration) 
 		{
 			_context = context;
@@ -27,6 +28,8 @@ namespace RepositoryLayer.Service
 			_emailService = emailService;
 			_configuration = configuration;
 		}
+
+
 		/// <summary>
 		/// Method to register the user in database
 		/// </summary>
@@ -52,6 +55,8 @@ namespace RepositoryLayer.Service
 
 			return null;
 		}
+
+
 		/// <summary>
 		/// method to login the user
 		/// </summary>
@@ -75,6 +80,8 @@ namespace RepositoryLayer.Service
 			}
 			return null;
 		}
+
+
 		/// <summary>
 		/// method to generate the jwt token
 		/// </summary>
@@ -101,6 +108,8 @@ namespace RepositoryLayer.Service
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
+
+
 		/// <summary>
 		/// method to get the temperory token to verify the user while reseting the password
 		/// </summary>
@@ -109,6 +118,8 @@ namespace RepositoryLayer.Service
 		{
 			return Convert.ToBase64String(Guid.NewGuid().ToByteArray());
 		}
+
+
 		/// <summary>
 		/// method to get the token on mail to reset the password
 		/// </summary>
@@ -129,6 +140,8 @@ namespace RepositoryLayer.Service
 			return true;
 			
 		}
+
+
 		/// <summary>
 		/// method to change the password
 		/// </summary>

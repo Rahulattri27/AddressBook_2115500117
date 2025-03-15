@@ -3,6 +3,9 @@ using ModelLayer.DTO;
 
 namespace BusinessLayer.Interface
 {
+    /// <summary>
+    /// Interface of AddressBookBL
+    /// </summary>
 	public interface IAddressBookBL
 	{
         Task<List<AddressBookDTO>> GetAllContacts();
