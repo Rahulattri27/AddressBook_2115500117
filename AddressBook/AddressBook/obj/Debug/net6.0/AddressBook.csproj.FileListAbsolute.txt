@@ -179,3 +179,6 @@
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/FluentValidation.DependencyInjectionExtensions.dll
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/obj/Debug/net6.0/AddressBook.MvcApplicationPartsAssemblyInfo.cs
 /Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/Pipelines.Sockets.Unofficial.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/StackExchange.Redis.dll
+/Users/rahulkumarair/Desktop/AddressBookRepo/AddressBook/AddressBook/bin/Debug/net6.0/RabbitMQ.Client.dll

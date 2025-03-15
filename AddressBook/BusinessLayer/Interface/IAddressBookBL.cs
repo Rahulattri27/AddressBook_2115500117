@@ -5,11 +5,11 @@ namespace BusinessLayer.Interface
 {
 	public interface IAddressBookBL
 	{
-        List<AddressBookDTO> GetAllContacts();
-        AddressBookDTO? GetContactById(int id);
-        bool AddContact(AddressBookDTO contact);
-        bool Update(int id, AddressBookDTO contact);
-        bool DeleteContact(int id);
+        Task<List<AddressBookDTO>> GetAllContacts();
+        Task<AddressBookDTO?> GetContactById(int id);
+        Task<bool> AddContact(AddressBookDTO contact);
+        Task<bool> Update(int id, AddressBookDTO contact);
+        Task<bool> DeleteContact(int id);
     }
 }
 

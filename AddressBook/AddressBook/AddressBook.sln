@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepositoryLayer", "..\Repos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModelLayer", "..\ModelLayer\ModelLayer.csproj", "{B957BAA1-3331-4D69-BC93-3D08484E35A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RabbitMQConsumer", "..\RabbitMQConsumer\RabbitMQConsumer.csproj", "{FE496DB4-A78D-4BE6-AE2B-5C6A5196A431}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{B957BAA1-3331-4D69-BC93-3D08484E35A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B957BAA1-3331-4D69-BC93-3D08484E35A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B957BAA1-3331-4D69-BC93-3D08484E35A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FE496DB4-A78D-4BE6-AE2B-5C6A5196A431}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE496DB4-A78D-4BE6-AE2B-5C6A5196A431}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE496DB4-A78D-4BE6-AE2B-5C6A5196A431}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE496DB4-A78D-4BE6-AE2B-5C6A5196A431}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

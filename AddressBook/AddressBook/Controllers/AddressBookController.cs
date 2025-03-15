@@ -5,6 +5,7 @@ using ModelLayer.Model;
 using BusinessLayer.Interface;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using BusinessLayer.Interface;
 
 namespace AddressBook.Controllers;
 
@@ -12,22 +13,24 @@ namespace AddressBook.Controllers;
 [Route("api/addressbook")]
 public class AddressBookController : ControllerBase
 {
-    
-
     /// <summary>
-    /// Object of BusinessLayer Service
+    /// Object of BusinessLayer Interface
     /// </summary>
     private readonly IAddressBookBL _addressBookBL;
+    private readonly IRabbitMqProducer _rabbitMq;
+
 
     /// <summary>
     /// call the constructor of controller
     /// </summary>
     /// <param name="context">DbContext from program.cs</param>
-    public AddressBookController(IAddressBookBL addressBookBL)
+    public AddressBookController(IAddressBookBL addressBookBL,IRabbitMqProducer rabbitMq)
     {
-       
         _addressBookBL = addressBookBL;
+        _rabbitMq = rabbitMq;
     }
+
+
     /// <summary>
     /// Get the userId from Token
     /// </summary>
@@ -37,6 +40,8 @@ public class AddressBookController : ControllerBase
         var userIdClaim = User.FindFirst("UserId")?.Value;
         return userIdClaim != null ? int.Parse(userIdClaim) : null;
     }
+
+
     /// <summary>
     /// function to get the Role
     /// </summary>
@@ -53,10 +58,10 @@ public class AddressBookController : ControllerBase
     /// <returns>Response of Success or failure</returns>
     [HttpGet]
     [Authorize(Roles="Admin")]
-    public IActionResult GetAll()
+    public async Task<IActionResult> GetAll()
     {
         var response = new ResponseBody<List<AddressBookDTO>>();
-        var data = _addressBookBL.GetAllContacts();
+        var data = await _addressBookBL.GetAllContacts();
         if(data != null)
         {
             response.Success = true;
@@ -69,6 +74,8 @@ public class AddressBookController : ControllerBase
         return NotFound(response);
 
     }
+
+
     /// <summary>
     /// Get the address book contact by particular id(Admin can access all ids but user can access only its ids)
     /// </summary>
@@ -76,12 +83,12 @@ public class AddressBookController : ControllerBase
     /// <returns>Success or failure response</returns>
     [Authorize]
     [HttpGet("{id}")]
-    public IActionResult GetById(int id)
+    public async Task<IActionResult> GetById(int id)
     {
         var response = new ResponseBody<AddressBookDTO>();
         var role = GetUserRole();
         var userId = GetLoggedInUserId();
-        var data = _addressBookBL.GetContactById(id);
+        var data = await _addressBookBL.GetContactById(id);
         if (data == null)
         {
             response.Success = false;
@@ -95,11 +102,12 @@ public class AddressBookController : ControllerBase
 
         }
         response.Success = true;
-        response.Message = $"AddressBook Entry with {id} Read Successfully.";
+        response.Message = $"AddressBook Entry with {id} Read Successfully userId {userId}.";
         response.Data = data;
-        return NotFound(response);
+        return Ok(response);
 
     }
+
 
     /// <summary>
     /// Add the Contact in the Address Book
@@ -108,7 +116,7 @@ public class AddressBookController : ControllerBase
     /// <returns>Success or failure response</returns>
     [HttpPost]
     [Authorize(Roles ="User")]
-    public IActionResult CreateContact(AddressBookDTO contact)
+    public async  Task<IActionResult> CreateContact(AddressBookDTO contact)
     {
         var response = new ResponseBody<AddressBookDTO>();
         var userId = GetLoggedInUserId();
@@ -117,13 +125,22 @@ public class AddressBookController : ControllerBase
             return Unauthorized();
         }
         contact.UserId = userId.Value;
-        var data = _addressBookBL.AddContact(contact);
+        var data = await _addressBookBL.AddContact(contact);
         if (!data)
         {
             response.Success = false;
             response.Message = "Unable to add Contact.";
             return BadRequest(response);
         }
+        var userEvent = new UserEventDTO
+        {
+            FirstName = contact.Name,
+            Email = contact.Email,
+            LastName = "",
+            EventType = "Contact Created"
+        };
+        _rabbitMq.PublishMessage(userEvent);
+
         response.Success = true;
         response.Message = "Contact Added Successfully.";
         response.Data = contact;
@@ -131,6 +148,8 @@ public class AddressBookController : ControllerBase
 
 
     }
+
+
     /// <summary>
     /// Update the Address book entry at particular id
     /// </summary>
@@ -139,12 +158,12 @@ public class AddressBookController : ControllerBase
     /// <returns>Succes or failure response</returns>
     [Authorize]
     [HttpPut("{id}")]
-    public IActionResult Update(int id,AddressBookDTO updatedcontact)
+    public async Task<IActionResult> Update(int id,AddressBookDTO updatedcontact)
     {
         var response = new ResponseBody<AddressBookDTO>();
         var role = GetUserRole();
         var userId = GetLoggedInUserId();
-        var existingContact = _addressBookBL.GetContactById(id);
+        var existingContact = await _addressBookBL.GetContactById(id);
         if (existingContact == null)
         {
             response.Message = "Contact not found";
@@ -154,7 +173,7 @@ public class AddressBookController : ControllerBase
         {
             return Forbid();
         }
-        var result = _addressBookBL.Update(id, updatedcontact);
+        var result = await _addressBookBL.Update(id, updatedcontact);
         if (!result)
         {
             response.Message = "Unable to update contact.";
@@ -168,6 +187,7 @@ public class AddressBookController : ControllerBase
 
     }
 
+
     /// <summary>
     /// Delete the particular id Contact info if present
     /// </summary>
@@ -175,12 +195,12 @@ public class AddressBookController : ControllerBase
     /// <returns>Success or failure response</returns>
     [HttpDelete("{id}")]
     [Authorize]
-    public IActionResult Delete(int id)
+    public async Task<IActionResult> Delete(int id)
     {
         var response = new ResponseBody<string>();
         var role = GetUserRole();
         var userId = GetLoggedInUserId();
-        var existingContact = _addressBookBL.GetContactById(id);
+        var existingContact = await _addressBookBL.GetContactById(id);
         if (existingContact == null)
         {
             response.Message = "Contact Not Found";
@@ -190,7 +210,7 @@ public class AddressBookController : ControllerBase
         {
             return Forbid();
         }
-        var data = _addressBookBL.DeleteContact(id);
+        var data = await _addressBookBL.DeleteContact(id);
         if (data)
         {
             response.Success = true;

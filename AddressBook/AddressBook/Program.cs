@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using RepositoryLayer.Hashing;
+using StackExchange.Redis;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -31,6 +32,9 @@ builder.Services.AddScoped<IUserRL, UserRL>();
 builder.Services.AddScoped<IUserBL, UserBL>();
 builder.Services.AddScoped<Password_Hash>();
 builder.Services.AddScoped<IEmailService, EmailService>();
+var redisConfig = builder.Configuration.GetSection("Redis:ConnectionString").Value;
+builder.Services.AddSingleton<IConnectionMultiplexer>(ConnectionMultiplexer.Connect(redisConfig));
+builder.Services.AddScoped<IRabbitMqProducer, RabbitMqProducer>();
 
 
 var key = Encoding.UTF8.GetBytes("MySuperLongSuperSecureSecretKey123456!");
